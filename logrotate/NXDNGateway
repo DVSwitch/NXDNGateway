@@ -1,0 +1,22 @@
+/var/log/mmdvm/NXDNGateway.log
+{
+        daily
+        rotate 30
+        maxage 30
+#       dateyesterday
+        dateext
+        dateformat -%Y-%m-%d
+        extension .log
+        ifempty
+        create
+
+        firstaction
+        today=$(date +"%Y-%m-%d")
+        filename="/var/log/mmdvm/NXDNGateway-$today.log"
+        if [ -f "$filename" ]; then
+                mv /var/log/mmdvm/NXDNGateway-$today.log /var/log/mmdvm/NXDNGateway.log
+        fi
+        endscript
+
+}
+ 
